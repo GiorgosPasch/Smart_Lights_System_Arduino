@@ -1,0 +1,40 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25400\viewh16000\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+int LightPin = 2;\
+int sensorState = 0;\
+int sensorPin = 7;\
+int PhotoPin = A0;\
+int readPhoto;\
+\
+void setup() \{\
+  pinMode(LightPin, OUTPUT);\
+  pinMode(sensorPin , INPUT);\
+  pinMode(PhotoPin, INPUT);\
+\}\
+\
+void loop() \{   \
+  readPhoto = analogRead(PhotoPin);\
+  sensorState = digitalRead(sensorPin);\
+  \
+  if (readPhoto < 518) \{\
+  digitalWrite(LightPin, HIGH);\
+  \}else\{\
+      digitalWrite(LightPin, LOW);\
+  \}\
+  \
+  if (sensorState == HIGH && readPhoto<518)\{\
+  	digitalWrite(LightPin, HIGH);\
+  \}\
+  else \{\
+  	digitalWrite(LightPin, LOW);\
+  \}\
+  \
+  delay(1);              \
+  \
+\}}
